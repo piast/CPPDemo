@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:88b1c628956dd4a429b3e9f8c7df2aea:990485c3199474fddf76f4dd9d2d6050:2a288f7160b778d75d6fb3a0e2108afb$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="textures.png" width="762" height="857">
+    <sprite n="background.png" x="0" y="0" w="762" h="685"/>
+    <sprite n="player_00.png" x="0" y="685" w="106" h="85"/>
+    <sprite n="player_01.png" x="106" y="685" w="106" h="85"/>
+    <sprite n="shark_00.png" x="212" y="685" w="172" h="86"/>
+    <sprite n="shark_01.png" x="384" y="685" w="172" h="86"/>
+    <sprite n="shark_02.png" x="556" y="685" w="172" h="86"/>
+    <sprite n="shark_03.png" x="0" y="771" w="172" h="86"/>
+    <sprite n="shark_04.png" x="172" y="771" w="172" h="86"/>
+    <sprite n="shark_05.png" x="344" y="771" w="172" h="86"/>
+</TextureAtlas>

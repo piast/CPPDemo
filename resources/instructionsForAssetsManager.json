@@ -1,0 +1,49 @@
+{
+	"spriteSheets" : [
+	
+						{
+							"path" : "textures.png" ,
+							"type" : ""
+						}		
+						
+						
+						
+
+	],
+	
+	"animations" : [
+						{
+							"name" : "player" ,
+							"frameRate": 2,
+							"scenarios" : []
+						},
+						{
+							"name" : "ball" ,
+							"frameRate": 5,
+							"scenarios" : []
+						},
+		
+						{
+							"name" : "shark" ,
+							"frameRate": 6,
+							"scenarios" : ["steam"]
+						}					
+						
+						
+						
+
+	] ,
+
+	"scenarios" : [
+                    {
+                        "name": "player",
+						"frameRate": 12,
+                        "swim": [0, 8, "swim"]
+                    }
+
+
+
+	]
+
+
+}
