@@ -1,19 +1,33 @@
 #include "FramesDataPool.h"
 #include "globalconst.h"
-
+#include <thread>
+//#include <chrono>
+#include <iostream>
 //FramesDataPool::FramesDataPool()
 //{
 
 //}
 
-QMap<QString, QPixmap> FramesDataPool::m_frames;
-QMap<QString, FramesDataPool::AnimationData> FramesDataPool::m_animationsData;
+QHash<QString, QPixmap> FramesDataPool::m_frames;
+QHash<QString, FramesDataPool::AnimationData> FramesDataPool::m_animationsData;
 
+
+void FramesDataPool::init()
+{
+//    auto start = std::chrono::steady_clock::now();
+    getDataFromXML(PATH_TO_RESOURCES + "/images/textures.xml");
+
+//    getDataFromJson(PATH_TO_RESOURCES + "/instructionsForAssetsManager.json");
+//    std::cout << std::this_thread::get_id() << "\n";
+    std::thread threadJsonGetting(getDataFromJson, PATH_TO_RESOURCES + "/instructionsForAssetsManager.json");
+    threadJsonGetting.join();
+
+//    auto end = std::chrono::steady_clock::now();
+//    std::cout << std::chrono::duration <double, std::milli> (end - start).count() << " ms" <<  std::endl;
+}
 
 void FramesDataPool::getDataFromXML(QString fileName){
-    /* В данном коде не осуществляется проверка на закрытие тега
-         * поскольку в этом нет необходимости, но функционал QXmlStreamReader это позволяет
-         * */
+    // В данном коде не осуществляется проверка на закрытие тега, поскольку в этом нет необходимости
     QPixmap pngFile;
     QFile xmlFile;
 
@@ -51,13 +65,9 @@ void FramesDataPool::getDataFromXML(QString fileName){
                 QString name;
                 int x, y, width, height;
 
-                /* Забираем все атрибуты тега и перебираем их для проверки на соответствие
-                     * нужному нам атрибуту
-                     * */
+                // Забираем все атрибуты тега и перебираем их для проверки на соответствие нужному нам атрибуту
                 foreach(const QXmlStreamAttribute &attr, xmlReader.attributes()) {
-                    /* Если найден нужный атрибут, то по его значению устанавливаем
-                         * состояние чекбокса
-                         * */
+                    // Если найден нужный атрибут, то по его значению устанавливаем значения координат
 
                     if (attr.name().toString() == "n")
                         name = attr.value().toString();
@@ -100,6 +110,8 @@ void FramesDataPool::getDataFromXML(QString fileName){
 
 void FramesDataPool::getDataFromJson(QString fileName)
 {
+//    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+//    std::cout << std::this_thread::get_id() << "\n";
     QString val;
     QFile file;
     file.setFileName(fileName);
@@ -156,10 +168,4 @@ FramesDataPool::AnimationData &FramesDataPool::getAnimationData(QString animatio
 QPixmap &FramesDataPool::getFrame(QString frameName)
 {
     return m_frames[frameName];
-}
-
-void FramesDataPool::init()
-{
-    getDataFromXML(PATH_TO_RESOURCES + "/images/textures.xml");
-    getDataFromJson(PATH_TO_RESOURCES + "/instructionsForAssetsManager.json");
 }

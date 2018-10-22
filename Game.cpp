@@ -3,7 +3,6 @@
 #include <EventEmitter.h>
 
 
-
 Game::Game(QObject *parent): QObject(parent)
 {
 
@@ -64,6 +63,8 @@ void Game::init()
 
     mp_gameOver = std::bind(&Game::gameOver, this);
     m_entitiesManager->eventEmitter().addListener( "gameOver", &mp_gameOver );
+
+
 
 
 //    m_ticker->add( f );

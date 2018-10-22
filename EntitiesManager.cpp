@@ -1,6 +1,12 @@
 #include "EntitiesManager.h"
 #include <QGraphicsColorizeEffect>
 
+#include <qguiapplication.h>
+#include <qscreen.h>
+#include <string>
+#include <sstream>
+
+
 EntitiesManager::EntitiesManager()
 {
 
@@ -28,6 +34,21 @@ void EntitiesManager::init(GraphicsView *view, QGraphicsScene *scene){
     m_textClickToContinue->setHtml("<h1 style=\"font-size: 30px; font-family: sans-serif; color: #000;\">click to continue</h1>");
     width = m_textClickToContinue->boundingRect().width();
     m_textClickToContinue->setPos(m_scene->width()/2 - width/2,320);
+
+
+//    QRect rect = QGuiApplication::primaryScreen()->geometry();
+////    qreal height = qMax(rect.width(), rect.height());
+////    qreal width = qMin(rect.width(), rect.height());
+////    qDebug()<< "rect.width()" << rect.width();
+////    qDebug()<< "rect.height()" << rect.height();
+//    std::string text1("<h1 style=\"font-size: 30px; font-family: sans-serif; color: #000;\">");
+//    std::string text2("</h1>");
+//    std::stringstream text3;
+//    text3 << rect.width();
+//    std::string textResult = text1 + text3.str() + text2;
+//    QGraphicsTextItem * text;
+//    text->setHtml(textResult.data());
+//    m_scene->addItem(text);
 
 
 }
@@ -89,7 +110,7 @@ void EntitiesManager::update(int deltaTime)
             m_scene->removeItem( (*it) );
             delete (*it);
             it = m_sharks.erase(it);
-            qDebug()<< "delete entitie" << m_sharks.size();
+            //qDebug()<< "delete entitie" << m_sharks.size();
         }
         else{
 

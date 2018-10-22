@@ -3,7 +3,8 @@
 
 #include <QDebug>
 #include <QFile>
-#include <QMap>
+//#include <QMap>
+#include <QHash>
 #include <QMessageBox>
 #include <QXmlStreamReader>
 #include <QJsonDocument>
@@ -20,18 +21,14 @@ public:
 
 private:
 
-    static QMap<QString, QPixmap> m_frames;
-    static QMap<QString, AnimationData> m_animationsData;
-
+    static QHash<QString, QPixmap> m_frames;
+    static QHash<QString, AnimationData> m_animationsData;
     static void getDataFromXML(QString fileName);
-
-
     static void getDataFromJson(QString fileName/*animationData*/);
 
 
-
-
 public:
+
     //FramesDataPool();
     struct AnimationData
     {
@@ -41,14 +38,9 @@ public:
         //ScenariosData defaultScenarioData; //TODO
     };
 
-
-    static AnimationData& getAnimationData(QString animationName);
-
-    static QPixmap& getFrame(QString frameName);
-
-
     static void init();
-
+    static AnimationData& getAnimationData(QString animationName);
+    static QPixmap& getFrame(QString frameName);
 
 };
 

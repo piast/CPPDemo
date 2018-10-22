@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     Background.cpp \
-    EventEmitter.cpp \
     FramesDataPool.cpp \
     Game.cpp \
     globalconst.cpp \
