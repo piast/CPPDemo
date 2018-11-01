@@ -4,8 +4,10 @@
 #include "Player.h"
 #include "Shark.h"
 #include "GraphicsView.h"
+#include "ScaleProcessor.h"
 #include <QGraphicsScene>
 #include <EventEmitter.h>
+
 
 //#include <time.h>
 

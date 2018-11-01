@@ -1,8 +1,8 @@
 #include "EntitiesManager.h"
 #include <QGraphicsColorizeEffect>
 
-#include <qguiapplication.h>
-#include <qscreen.h>
+//#include <qguiapplication.h>
+//#include <qscreen.h>
 #include <string>
 #include <sstream>
 
@@ -36,11 +36,7 @@ void EntitiesManager::init(GraphicsView *view, QGraphicsScene *scene){
     m_textClickToContinue->setPos(m_scene->width()/2 - width/2,320);
 
 
-//    QRect rect = QGuiApplication::primaryScreen()->geometry();
-////    qreal height = qMax(rect.width(), rect.height());
-////    qreal width = qMin(rect.width(), rect.height());
-////    qDebug()<< "rect.width()" << rect.width();
-////    qDebug()<< "rect.height()" << rect.height();
+
 //    std::string text1("<h1 style=\"font-size: 30px; font-family: sans-serif; color: #000;\">");
 //    std::string text2("</h1>");
 //    std::stringstream text3;
@@ -152,6 +148,9 @@ void EntitiesManager::update(int deltaTime)
 
 void EntitiesManager::onMousePress(int x, int y)
 {
+    x = (int)( x / ScaleProcessor::getScaleRatio() );
+    y = (int)( y / ScaleProcessor::getScaleRatio() );
+
     if(m_player->state() == Player::SWIM){
 
         auto playerWidth = m_player->boundingRect().width();

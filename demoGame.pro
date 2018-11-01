@@ -28,7 +28,6 @@ SOURCES += \
     Background.cpp \
     FramesDataPool.cpp \
     Game.cpp \
-    globalconst.cpp \
     GraphicsView.cpp \
     Player.cpp \
     Sprite.cpp \
@@ -38,7 +37,9 @@ SOURCES += \
     libs/tweeny/tweenpoint.tcc \
     libs/tweeny/tweeny.tcc \
     Shark.cpp \
-    EntitiesManager.cpp
+    EntitiesManager.cpp \
+    ScaleProcessor.cpp \
+    globalconst.cpp
 
 HEADERS += \
     Background.h \
@@ -59,7 +60,8 @@ HEADERS += \
     libs/tweeny/tweentraits.h \
     libs/tweeny/tweeny.h \
     Shark.h \
-    EntitiesManager.h
+    EntitiesManager.h \
+    ScaleProcessor.h
 
 
 CONFIG += mobility

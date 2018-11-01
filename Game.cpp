@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <functional>
 #include <EventEmitter.h>
+#include "ScaleProcessor.h"
 
 
 Game::Game(QObject *parent): QObject(parent)
@@ -23,6 +24,7 @@ void Game::init()
     m_view->show();
     //m_framesDataPool = new FramesDataPool;
     FramesDataPool::init();
+    ScaleProcessor::init();
 
     QPixmap& bgrPixmap = FramesDataPool::getFrame("background.png");
     m_background = new Background( bgrPixmap );
@@ -35,11 +37,11 @@ void Game::init()
     //m_scene->addRect(m_scene->sceneRect());
 
     //m_view = m_mainWindow->getGraphicsView();
-    m_view->setFixedSize(bgrPixmap.size());
-    //m_view->scale(1.4, 1.4);
+    double scaleRatio = ScaleProcessor::getScaleRatio();
+    m_view->setFixedSize(bgrPixmap.size().width()*scaleRatio, bgrPixmap.size().height()*scaleRatio);
+    m_view->scale( scaleRatio, scaleRatio );
     m_view->setScene(m_scene);
     m_scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-
     m_view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_view->setTransformationAnchor(QGraphicsView::NoAnchor);
